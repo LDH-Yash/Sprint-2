@@ -7,21 +7,26 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.cg.entity.Customer;
 
+@Transactional
+@Repository
 public class CustomerDao implements ICustomerDao 
 {
 	@PersistenceContext
 	EntityManager em;
 
-	@Override
-	public void update(int id) 
-	{
+//	@Override
+//	public void updateName(int id) 
+//	{
 //		Scanner sc = new Scanner(System.in);
 //		Customer cust = em.find(Customer.class, id);
 //		cust.setCustomerName(sc.next());
 //		sc.close();
-	}
+//	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -30,5 +35,4 @@ public class CustomerDao implements ICustomerDao
 		Query q=em.createQuery("Select c from Customer c");
 		return q.getResultList();
 	}
-
 }
