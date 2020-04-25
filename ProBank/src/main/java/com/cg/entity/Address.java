@@ -20,7 +20,7 @@ public class Address
 	@Id
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	@NotNull(message="Address Id input is Mandatory")
-	private String addressId;
+	private int addressId;
 	@Column(name="address_line1")
 	@NotNull(message="Address Line1 is Mandatory")
 	private String addressLine1;
@@ -47,7 +47,7 @@ public class Address
 		super();
 	}
 
-	public Address(String addressId, String addressLine1, String addressLine2, String addressLine3, String addressCity, String addressState, String addressCountry, String addressZipcode) 
+	public Address(int addressId, String addressLine1, String addressLine2, String addressLine3, String addressCity, String addressState, String addressCountry, String addressZipcode) 
 	{
 		super();
 		this.addressId = addressId;
@@ -60,12 +60,12 @@ public class Address
 		this.addressZipcode = addressZipcode;
 	}
 
-	public String getAddressId() 
+	public int getAddressId() 
 	{
 		return addressId;
 	}
 
-	public void setAddressId(String addressId) 
+	public void setAddressId(int addressId) 
 	{
 		this.addressId = addressId;
 	}
