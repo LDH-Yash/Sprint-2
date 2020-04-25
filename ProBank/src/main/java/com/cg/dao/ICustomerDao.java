@@ -6,8 +6,6 @@ import com.cg.entity.Customer;
 
 public interface ICustomerDao 
 {
-	//public void updateName(int id);
-	//public void updateAddress(int id);
-	//public void updateContact(int id);
+	public void update(Customer cust);
 	public List<Customer> retrive();
 }

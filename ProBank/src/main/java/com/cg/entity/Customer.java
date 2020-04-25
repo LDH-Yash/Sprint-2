@@ -2,9 +2,12 @@ package com.cg.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -24,7 +27,8 @@ public class Customer
 	@Column(name="cust_name")
 	@NotNull(message="Name is Mandatory")
 	private String customerName;
-	@Column(name="cust_address")
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="addressId")
 	@NotNull(message="Customer's Address is Mandatory")
 	private String customerAddress;
 	@Column(name="cust_aadhar")

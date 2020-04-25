@@ -1,7 +1,6 @@
 package com.cg.dao;
 
 import java.util.List;
-//import java.util.Scanner;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,14 +18,17 @@ public class CustomerDao implements ICustomerDao
 	@PersistenceContext
 	EntityManager em;
 
-//	@Override
-//	public void updateName(int id) 
-//	{
-//		Scanner sc = new Scanner(System.in);
-//		Customer cust = em.find(Customer.class, id);
-//		cust.setCustomerName(sc.next());
-//		sc.close();
-//	}
+	@Override
+	public void update(Customer cust) 
+	{
+		Customer cust1 = em.find(Customer.class, cust.getCustomerId());
+		if(cust1!=null)
+		{
+			cust1.setCustomerName(cust.getCustomerName());
+			cust1.setCustomerAddress(cust.getCustomerAddress());
+			cust1.setCustomerContact(cust.getCustomerContact());
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
