@@ -28,6 +28,10 @@ public class CustomerDao implements ICustomerDao
 			cust1.setCustomerAddress(cust.getCustomerAddress());
 			cust1.setCustomerContact(cust.getCustomerContact());
 		}
+		else
+		{
+			System.out.println("UnSuccessful");
+		}
 	}
 
 	@SuppressWarnings("unchecked")

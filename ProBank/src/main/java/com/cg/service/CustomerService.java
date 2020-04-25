@@ -20,4 +20,10 @@ public class CustomerService implements ICustomerService
 		return dao.retrive();
 	}
 
+	@Override
+	public void updateService(Customer cust) 
+	{
+		dao.update(cust);	
+	}
+
 }

@@ -6,4 +6,5 @@ import com.cg.entity.Customer;
 public interface ICustomerService 
 {
 	public List<Customer> getAccounts();
+	public void updateService(Customer cust);
 }

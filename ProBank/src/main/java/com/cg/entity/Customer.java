@@ -30,7 +30,7 @@ public class Customer
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="addressId")
 	@NotNull(message="Customer's Address is Mandatory")
-	private String customerAddress;
+	private Address customerAddress;
 	@Column(name="cust_aadhar")
 	@NotNull(message="Customer's Aadhar Number is Mandatory")
 	private String customerAadhar;
@@ -52,7 +52,7 @@ public class Customer
 		super();
 	}
 
-	public Customer(String customerId, String customerName, String customerAddress, String customerAadhar, String customerPan, String customerContact, String customerGender, Date customerDob) 
+	public Customer(String customerId, String customerName, Address customerAddress, String customerAadhar, String customerPan, String customerContact, String customerGender, Date customerDob) 
 	{
 		super();
 		this.customerId = customerId;
@@ -85,12 +85,12 @@ public class Customer
 		this.customerName = customerName;
 	}
 
-	public String getCustomerAddress() 
+	public Address getCustomerAddress() 
 	{
 		return customerAddress;
 	}
 
-	public void setCustomerAddress(String customerAddress) 
+	public void setCustomerAddress(Address customerAddress) 
 	{
 		this.customerAddress = customerAddress;
 	}
