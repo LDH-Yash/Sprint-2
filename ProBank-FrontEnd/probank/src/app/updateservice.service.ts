@@ -33,7 +33,7 @@ export class UpdateserviceService
   }
   updateaddress(addressesId:number, addressUpdated:Address):Observable<any>
   {
-    let url = "http://localhost:3333/customers/"+addressesId;
+    let url = "http://localhost:3333/addresses/"+addressesId;
     return this._http.put(url, addressUpdated, {responseType:'text'});
   }
 }

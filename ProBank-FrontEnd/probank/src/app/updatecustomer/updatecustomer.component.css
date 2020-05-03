@@ -6,9 +6,9 @@
 }
 .zoom:hover 
 {
-    -ms-transform: scale(1.5); /* IE 9 */
-    -webkit-transform: scale(1.5); /* Safari 3-8 */
-    transform: scale(1.5); 
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
 }
 .zoom1
 {
@@ -43,4 +43,12 @@
     -ms-transform: scale(1.15); /* IE 9 */
     -webkit-transform: scale(1.15); /* Safari 3-8 */
     transform: scale(1.15); 
+}
+.flip
+{
+    transition: transform .2s;
+}
+.flip:hover
+{
+    transform: rotateY(360deg);
 }

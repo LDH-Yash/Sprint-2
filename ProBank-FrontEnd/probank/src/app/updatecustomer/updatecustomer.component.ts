@@ -16,6 +16,7 @@ export class UpdatecustomerComponent implements OnInit {
 
   flag3:boolean = true;
   flag4:boolean = true;
+  flag5:boolean = true;
   @ViewChild("formdata")
   form: NgForm;
   cust:Customer[];
@@ -33,8 +34,9 @@ export class UpdatecustomerComponent implements OnInit {
         console.log("error occured while subscribing data from server");
       });
   }
-  update(id:number)
+  updateCustomer(id:number)
   {
+    this.cancelUpdatingAddress();
     this.flag3 = false;
     this.id = id;
     this.service.getUgetcustomerByIDser(this.id).subscribe(data=>
@@ -46,17 +48,10 @@ export class UpdatecustomerComponent implements OnInit {
         console.log("error occured while fetching data from server for a perticular ID");
       });
   }
-  cancel()
+  fetchAddress(id:number)
   {
-    this.flag3 = true;
-  }
-  hideAddress()
-  {
-    this.flag4 = true;
-  }
-  showAddress(id:number)
-  {
-    this.flag4 = false;
+    this.cancelUpdate();
+    this.flag5 = false;
     this.id = id;
     this.service.getUgetcustomerByIDser(this.id).subscribe(data=>
       {
@@ -75,6 +70,14 @@ export class UpdatecustomerComponent implements OnInit {
         console.log("error occured while fetching data from server for a perticular ID");
       });
   }
+  cancelUpdatingAddress()
+  {
+    this.flag5 = true;
+  }
+  cancelUpdate()
+  {
+    this.flag3 = true;
+  }
   submitFunc()
   {
     console.log(this.tempCust);
@@ -89,7 +92,20 @@ export class UpdatecustomerComponent implements OnInit {
         console.log("error occured while sending data to the server for a perticular ID");
       });
       this.route.navigate(["/"]);
-      this.loadData();
+  }
+  submitFunc2()
+  {
+    console.log(this.tempCust);
+    console.log(this.tempAddress);
+    this.service.updateaddress(this.id,this.tempAddress).subscribe(data=>
+      {
+        alert("Updated Successfully");
+      },
+      error=>{
+        alert("error occured while sending data to the server for a perticular ID");
+        console.log("error occured while sending data to the server for a perticular ID");
+      });
+      this.route.navigate(["/"]);
   }
   loadData()
   {
@@ -103,87 +119,3 @@ export class UpdatecustomerComponent implements OnInit {
       });
   }
 }
-
-// import { Component, ViewChild } from '@angular/core';
-// import { ClassStruct } from './class-struct';
-// import { ServiceComponentService } from './service-component.service';
-// import { NgForm } from '@angular/forms';
-// import { Router } from '@angular/router';
-
-
-// @Component({
-//   selector: 'app-root',
-//   templateUrl: './app.component.html',
-//   styleUrls: ['./app.component.css']
-// })
-// export class AppComponent 
-// {
-//   temp:any="";
-//   title = 'probank';
-//   field:String;
-//   emp1:ClassStruct = new ClassStruct();
-//   prods:ClassStruct[];
-//   flag:boolean = false;
-//   flag1:boolean = true;
-//   flag3:boolean = true;
-//   constructor( private acter:ServiceComponentService, private route:Router ) {}
-//   @ViewChild("formdata")
-//   form: NgForm;
-//   ngOnInit():void 
-//   {
-//     this.acter.getProducts().subscribe((data) => this.prods = data);
-//   }
-//   selectedField(str:String)
-//   {
-//     this.field = str;
-//   }
-//   home()
-//   {
-//     this.acter.getProducts().subscribe((data) => this.prods = data);
-//     this.flag1=true;
-//     this.flag3=true;
-//   }
-//   add()
-//   {
-//     if(this.flag === false )
-//     {
-//       this.flag = true;
-//     }
-//     else
-//     {
-//       this.flag = false;
-//     }
-//   }
-//   submit()
-//   {
-//     this.prods.push(this.emp1);
-//     alert('Data added');
-//     this.emp1 = new ClassStruct();
-//     this.form.resetForm();
-//   }
-//   remove(prodId:number)
-//   {
-//     //this.prods = this.prods.filter( p => p.id != prodObj);
-//     this.prods.splice(prodId,1);
-//     alert("Data deleted");
-//   }
-//   update(prodId:number)
-//   {
-//     this.flag3 = false;
-//     this.prods = this.acter.updateReq(this.prods,prodId);
-//     if( this.flag1 === true )
-//     {
-//       this.flag1 = false;
-//     }
-//     this.acter.getProds();
-//   }
-//   cancel()
-//   {
-//     if( this.flag1 === false )
-//     {
-//       this.flag1 = true;
-//     }
-//     this.flag3 = true;
-//     this.flag=false;
-//   }
-// }

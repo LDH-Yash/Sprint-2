@@ -34,3 +34,11 @@
     -webkit-transform: scale(1.5); /* Safari 3-8 */
     transform: scale(1.5); 
 }
+.flip
+{
+    transition: transform .2s;
+}
+.flip:hover
+{
+    transform: rotateY(360deg);
+}
